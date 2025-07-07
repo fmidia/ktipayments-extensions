@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Carteira dApp Base",
+  "version": "1.0",
+  "description": "Extensão base para carteira dApp compatível com múltiplos navegadores.",
+  "icons": {
+    "48": "icon.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["injected.js"]
+    }
+  ],
+  "permissions": ["scripting", "activeTab", "tabs"],
+  "externally_connectable": {
+    "matches": ["*://*/*"]
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["content.js"],
+      "matches": ["<all_urls>"]
+    }
+  }
+}
